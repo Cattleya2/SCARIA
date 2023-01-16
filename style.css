@@ -49,6 +49,11 @@ h6 {
   z-index: 9999;
 }
 
+.leaflet-container {
+	font: 13px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+	}
+
+
 form {
   margin-top: 2px;
 }
