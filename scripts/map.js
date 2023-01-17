@@ -876,7 +876,7 @@ $(window).on('load', function() {
     }
 
     /* And this is a standard popup for bigger screens */
-    L.popup({className: 'intro-popup', maxWidth : 512, maxHeight : 384})
+    L.popup({className: 'intro-popup', maxWidth : 1080, maxHeight : 640})
       .setLatLng(coordinates) // this needs to change
       .setContent(info)
       .openOn(map);
