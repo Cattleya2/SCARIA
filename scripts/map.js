@@ -926,10 +926,18 @@ $(window).on('load', function() {
    * Loads the basemap and adds it to the map
    */
   function addBaseMap() {
-    var basemap = trySetting('_tileProvider', 'CartoDB.Positron');
-    L.tileLayer.provider(basemap, {
-      maxZoom: 18
-    }).addTo(map);
+    // var basemap = trySetting('_tileProvider', 'CartoDB.Positron');
+    var mapboxUrl = 'https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}';
+    var accessToken = 'pk.eyJ1IjoiZW5vY2tzNHNldGgiLCJhIjoiY2xkYTQ4bDZlMDlyMDNxb3ZiZjlwa3V0YyJ9.dLISwIplNszNuaJDHIbVBQ';
+
+    streets = L.tileLayer(mapboxUrl, { id: 'streets-v9', attribution: '<a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> <a href="https://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap Contributors</a> ', maxZoom: 18, accessToken: accessToken });
+
+
+    // L.tileLayer.provider(basemap, {
+    //   maxZoom: 18
+    // }).addTo(map);
+
+    streets.addTo(map);
     L.control.attribution({
       position: trySetting('_mapAttribution', 'bottomright')
     }).addTo(map);
