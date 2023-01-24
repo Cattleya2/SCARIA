@@ -931,13 +931,14 @@ $(window).on('load', function() {
     var accessToken = 'pk.eyJ1IjoiZW5vY2tzNHNldGgiLCJhIjoiY2xkYTQ4bDZlMDlyMDNxb3ZiZjlwa3V0YyJ9.dLISwIplNszNuaJDHIbVBQ';
 
     streets = L.tileLayer(mapboxUrl, { id: 'streets-v9', attribution: '<a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> <a href="https://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap Contributors</a> ', maxZoom: 18, accessToken: accessToken });
+    outdoors = L.tileLayer(mapboxUrl, { id: 'outdoors-v9', attribution: '<a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> <a href="https://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap Contributors</a> ', maxZoom: 18, accessToken: accessToken });
 
 
     // L.tileLayer.provider(basemap, {
     //   maxZoom: 18
     // }).addTo(map);
 
-    streets.addTo(map);
+    outdoors.addTo(map);
     L.control.attribution({
       position: trySetting('_mapAttribution', 'bottomright')
     }).addTo(map);
