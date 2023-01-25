@@ -33,6 +33,10 @@ h6 {
   height: 0;
 }
 
+.intro-popup{
+  margin-bottom: -30px;
+}
+
 .pointer {
   cursor: pointer;
 }
