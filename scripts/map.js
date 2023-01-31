@@ -129,7 +129,7 @@ $(window).on('load', function() {
         var marker = L.marker([point.Latitude, point.Longitude], {icon: icon})
           .bindPopup("<h3>" + point['Name'] + '</h3><br>' +
           (point['Image'] ? ('<img src="' + point['Image'] + '"><br><hr>') : '<hr>') +
-          point['Description'], {maxWidth: 640, maxHeight: 512});
+          point['Description'], {maxWidth: 240, maxHeight: 240});
 
         if (layers !== undefined && layers.length !== 1) {
           marker.addTo(layers[point.Group]);
@@ -876,7 +876,7 @@ $(window).on('load', function() {
     }
 
     /* And this is a standard popup for bigger screens */
-    L.popup({className: 'intro-popup', maxWidth : 1080, maxHeight : 640})
+    L.popup({className: 'intro-popup', maxWidth : 512, maxHeight : 480})
       .setLatLng(coordinates) // this needs to change
       .setContent(info)
       .openOn(map);
