@@ -681,6 +681,47 @@ $(window).on('load', function() {
 
     addTitle();
 
+
+    // Map info
+    function aboutMap(info) {
+      L.Control.Custom = L.Control.extend({
+        options: {
+          position: 'topright',
+          title: '',
+          content: '',
+        },
+
+        onAdd: function (map) {
+          var controlDiv = L.DomUtil.create('div', 'leaflet-control-custom leaflet-control leaflet-bar leaflet-control');
+          controlDiv.title = this.options.title;
+
+          var controlUI = L.DomUtil.create('div', 'leaflet-control-custom-icon leaflet-bar-part leaflet-bar-part-single', controlDiv);
+          controlUI.innerHTML = '<i class="fas fa-info-circle"></i>';
+
+          var popup = L.popup({ className: 'intro-popup', maxWidth: 512, maxHeight: 480 , closeButton: true, closeOnClick: false });
+
+          L.DomEvent.addListener(controlUI, 'click', function () {
+            popup.setLatLng([0, 0])
+              .setContent(info)
+              .openOn(map);
+          });
+
+          return controlDiv;
+        }
+      });
+
+      L.control.custom = function (options) {
+        return new L.Control.Custom(options);
+      };
+
+      var customControl = L.control.custom({content: ''}).addTo(map);
+    }
+
+
+    if (getSetting('_introPopupText') != '') {
+      aboutMap(getSetting('_introPopupText'));
+    };
+
     // Change Map attribution to include author's info + urls
     changeAttribution();
 
